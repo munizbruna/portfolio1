@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Exemplos Práticos de Excel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .table-excel {
+            border-collapse: collapse;
+            border: 1px solid #d1d5db;
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        .table-excel th, .table-excel td {
+            border: 1px solid #d1d5db;
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+        .table-excel th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            text-align: center;
+        }
+        .table-excel .cell-header {
+            background-color: #e5e7eb;
+            font-weight: 500;
+        }
+        .formula {
+            background-color: #eef2ff;
+            color: #4338ca;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            word-break: break-all;
+        }
+        .highlight {
+            background-color: #fef9c3;
+        }
+        .example-card {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid #16a34a;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        .desafio {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            border-radius: 0.25rem;
+        }
+        .desafio p {
+            color: #14532d;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar de Navegação -->
+        <aside class="w-64 bg-white shadow-md p-6 sticky top-0 h-screen hidden lg:block">
+            <h1 class="text-2xl font-bold text-green-700">Excel Prático</h1>
+            <nav class="mt-8">
+                <ul class="space-y-2">
+                    <li><a href="#modulo1" class="nav-link block font-medium text-gray-600 hover:text-green-600">Conhecendo o Excel</a></li>
+                    <li><a href="#modulo2" class="nav-link block font-medium text-gray-600 hover:text-green-600">Edição de Dados</a></li>
+                    <li><a href="#modulo3" class="nav-link block font-medium text-gray-600 hover:text-green-600">Formatação</a></li>
+                    <li><a href="#modulo5" class="nav-link block font-medium text-gray-600 hover:text-green-600">Fórmulas</a></li>
+                    <li><a href="#modulo6" class="nav-link block font-medium text-gray-600 hover:text-green-600">Múltiplas Planilhas</a></li>
+                    <li><a href="#modulo7" class="nav-link block font-medium text-gray-600 hover:text-green-600">Funções Básicas</a></li>
+                    <li><a href="#modulo8" class="nav-link block font-medium text-gray-600 hover:text-green-600">Vínculos</a></li>
+                    <li><a href="#modulo9" class="nav-link block font-medium text-gray-600 hover:text-green-600">Gráficos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 p-6 md:p-10">
+            <header class="mb-10">
+                <h1 class="text-4xl font-bold text-gray-900">Portal de Exemplos Práticos de Excel</h1>
+                <p class="mt-2 text-lg text-gray-600">Navegue pelos módulos para ver exemplos práticos e detalhados baseados no seu material de estudo.</p>
+            </header>
+
+            <!-- Módulo 1: Conhecendo o Excel -->
+            <section id="modulo1" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 1: Conhecendo o Excel</h2>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">A Faixa de Opções (Ribbon)</h3>
+                    <p>É a principal barra de ferramentas na parte superior. Organizada em abas (Página Inicial, Inserir, Fórmulas, Dados, etc.), cada uma com grupos de comandos relacionados. Por exemplo, na aba <strong>Página Inicial</strong>, você encontra os grupos Fonte, Alinhamento e Número.</p>
+                    <img src="https://placehold.co/800x150/E2E8F0/4A5568?text=Faixa+de+Opções+(Guias+e+Grupos)" alt="[Imagem da Faixa de Opções do Excel]" class="my-4 rounded-lg w-full">
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Encontre e clique na aba "Dados". Dentro dela, localize o grupo "Classificar e Filtrar". Passe o mouse sobre o botão "Filtro" (ícone de funil) para ver sua descrição.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Barra de Ferramentas de Acesso Rápido</h3>
+                    <p>Localizada no canto superior esquerdo, acima da Faixa de Opções. Contém atalhos para os comandos mais usados, como Salvar, Desfazer e Refazer. Você pode personalizá-la clicando na seta para baixo à direita.</p>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione o comando "Impressão Rápida" à sua Barra de Ferramentas de Acesso Rápido.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Barra de Fórmulas e Caixa de Nome</h3>
+                    <p>Abaixo da Faixa de Opções. A <strong>Caixa de Nome</strong> (à esquerda) mostra o endereço da célula ativa (ex: A1). A <strong>Barra de Fórmulas</strong> (à direita) exibe o conteúdo da célula ativa, seja um texto, número ou uma fórmula.</p>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Clique na célula C5. Digite seu nome na Barra de Fórmulas e pressione Enter. Observe como o nome aparece na célula e a Caixa de Nome continua mostrando "C5".</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Área de Trabalho (Planilha)</h3>
+                    <p>A grade principal composta por colunas (letras) e linhas (números). A interseção de uma linha e uma coluna é uma <strong>célula</strong>. Na parte inferior, você pode navegar entre diferentes planilhas (abas) como Plan1, Plan2, etc.</p>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Crie uma nova planilha clicando no ícone de "+" ao lado de "Plan1". Renomeie a nova planilha para "Meu Teste" (clique duas vezes no nome para editar).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 2: Edição de Dados -->
+            <section id="modulo2" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 2: Edição de Dados</h2>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Controle de Despesas Pessoais</h3>
+                    <p><strong>Objetivo:</strong> Criar e organizar uma lista de contas a pagar, classificando por vencimento para priorizar pagamentos.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr class="cell-header"><td>Despesas</td><td>Prestações</td><td>Valor</td><td>Vencimento</td></tr><tr><td>Supermercado</td><td>1</td><td>R$ 330,00</td><td>01/jul</td></tr><tr><td>Academia</td><td>10</td><td>R$ 75,00</td><td>05/jul</td></tr><tr><td>Roupas</td><td>3</td><td>R$ 150,00</td><td>10/jul</td></tr><tr><td>Joias</td><td>6</td><td>R$ 100,00</td><td>12/jul</td></tr><tr class="highlight"><td>Internet</td><td>Mensal</td><td>R$ 69,90</td><td>15/jul</td></tr><tr><td>Farmácia</td><td>1</td><td>R$ 125,45</td><td>16/jul</td></tr><tr><td>Telefone</td><td>Mensal</td><td>R$ 49,90</td><td>18/jul</td></tr><tr><td>Condomínio</td><td>Mensal</td><td>R$ 150,00</td><td>18/jul</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione uma nova despesa "Aluguel" no valor de R$ 850,00 com vencimento em 10/jul. Em seguida, use a ferramenta "Classificar" (na aba Dados) para ordenar a lista pela coluna "Vencimento", do mais antigo para o mais novo.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Lista de Tarefas (To-Do List)</h3>
+                    <p><strong>Objetivo:</strong> Organizar atividades diárias. Use a formatação de "Caixa de Seleção" (em <code class="formula">Desenvolvedor > Inserir</code>) para marcar tarefas como concluídas.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr class="cell-header"><td>Status</td><td>Tarefa</td><td>Prioridade</td></tr><tr><td>☐</td><td>Responder e-mails importantes</td><td class="text-red-600 font-medium">Alta</td></tr><tr><td>☑</td><td>Preparar relatório semanal de vendas</td><td class="text-yellow-600 font-medium">Média</td></tr><tr><td>☐</td><td>Agendar reunião com a equipe de marketing</td><td class="text-green-600 font-medium">Baixa</td></tr><tr><td>☑</td><td>Comprar mantimentos para a semana</td><td class="text-green-600 font-medium">Baixa</td></tr><tr><td>☐</td><td>Ligar para o cliente Fictício S.A.</td><td class="text-yellow-600 font-medium">Média</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Insira uma nova linha e adicione a tarefa "Revisar apresentação para a diretoria" com prioridade "Alta". Depois, mova esta tarefa para o topo da lista.</p>
+                    </div>
+                </div>
+                 <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Cadastro de Clientes</h3>
+                    <p><strong>Objetivo:</strong> Manter um registro simples de clientes, utilizando diferentes tipos de dados (texto, número, data).</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr class="cell-header"><td>ID Cliente</td><td>Nome</td><td>Telefone</td><td>Data de Cadastro</td></tr><tr><td>1</td><td>João da Silva</td><td>(11) 98765-4321</td><td>15/08/2023</td></tr><tr><td>2</td><td>Maria Rita</td><td>(21) 91234-5678</td><td>22/08/2023</td></tr><tr><td>3</td><td>Carlos Souza</td><td>(31) 95555-1234</td><td>01/09/2023</td></tr><tr><td>4</td><td>Ana Pereira</td><td>(41) 94444-8765</td><td>05/09/2023</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere o número de telefone de "Carlos Souza" para "(31) 99999-8888". Depois, delete a linha inteira referente a "Ana Pereira".</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 3: Formatação -->
+            <section id="modulo3" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 3: Formatação</h2>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Formatando o Controle de Despesas</h3>
+                    <p><strong>Objetivo:</strong> Melhorar a legibilidade da planilha aplicando cores, bordas e formato de moeda.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr style="background-color: #dcfce7; font-weight: bold; text-align:center;"><td >Despesas</td><td>Valor</td><td>Vencimento</td></tr><tr><td>Supermercado</td><td class="text-right">R$ 330,00</td><td class="text-center">01/jul</td></tr><tr><td>Academia</td><td class="text-right">R$ 75,00</td><td class="text-center">05/jul</td></tr><tr><td>Internet</td><td class="text-right">R$ 69,90</td><td class="text-center">15/jul</td></tr><tr><td>Condomínio</td><td class="text-right">R$ 150,00</td><td class="text-center">18/jul</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere a cor de preenchimento do cabeçalho para um tom de azul claro. Aplique negrito e centralize o texto do cabeçalho. Por fim, adicione bordas a todas as células da tabela.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Relatório com Formatação Condicional</h3>
+                    <p><strong>Objetivo:</strong> Destacar visualmente informações importantes, como metas atingidas ou valores críticos. Use <code class="formula">Página Inicial > Formatação Condicional</code>.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr class="cell-header"><td>Vendedor</td><td>Vendas (R$)</td></tr><tr><td>Ana</td><td style="background-color: #a7f3d0;">12.500,00</td></tr><tr><td>Bruno</td><td style="background-color: #fecaca;">8.900,00</td></tr><tr><td>Carla</td><td style="background-color: #a7f3d0;">15.200,00</td></tr><tr><td>Daniel</td><td style="background-color: #fecaca;">9.800,00</td></tr><tr><td>Fernanda</td><td style="background-color: #a7f3d0;">10.150,00</td></tr><tr><td colspan="2" class="text-sm"><strong>Regra:</strong> Células com valor &gt; 10.000 são preenchidas com verde. Células &lt;= 10.000 com vermelho.</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Crie uma nova regra de formatação condicional que aplique a cor amarela em valores de vendas que estão entre R$ 9.000 e R$ 10.000.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Calendário Mensal</h3>
+                    <p><strong>Objetivo:</strong> Criar um calendário usando mesclagem de células, alinhamento e bordas para organização visual.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th colspan="7">Setembro 2023</th></tr></thead><tbody><tr class="cell-header"><td>Dom</td><td>Seg</td><td>Ter</td><td>Qua</td><td>Qui</td><td>Sex</td><td>Sáb</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td><td class="highlight">5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr><tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Use um preenchimento de cor diferente para destacar todos os sábados e domingos no calendário.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 5: Fórmulas -->
+            <section id="modulo5" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                 <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 5: Fórmulas e Preenchimento Automático</h2>
+                 <div class="example-card">
+                     <h3 class="text-xl font-semibold mb-2">Exemplo 1: Controle de Estoque (Referências Relativas)</h3>
+                     <p><strong>Objetivo:</strong> Calcular o valor total de cada item em estoque. A fórmula em D2 (<code class="formula">=B2*C2</code>) pode ser arrastada para baixo e se ajustará automaticamente para cada linha.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr class="cell-header"><td>Produto</td><td>Quantidade</td><td>Preço Unit.</td><td>Valor Total</td></tr><tr><td>Teclado</td><td>10</td><td>R$ 89,90</td><td class="highlight">R$ 899,00</td></tr><tr><td>Mouse</td><td>25</td><td>R$ 29,90</td><td class="highlight">R$ 747,50</td></tr><tr><td>Monitor</td><td>8</td><td>R$ 459,00</td><td class="highlight">R$ 3.672,00</td></tr><tr><td>Pen Drive</td><td>30</td><td>R$ 19,90</td><td class="highlight">R$ 597,00</td></tr><tr><td>HD Externo</td><td>12</td><td>R$ 250,00</td><td class="highlight">R$ 3.000,00</td></tr><tr><td colspan="3" class="text-right font-bold">Total Geral</td><td class="font-bold highlight">R$ 8.915,50</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um novo produto "Webcam" com 15 unidades a R$ 120,00 cada. Em seguida, use o preenchimento automático para calcular o "Valor Total" sem precisar digitar a fórmula novamente.</p>
+                    </div>
+                 </div>
+                 <div class="example-card">
+                     <h3 class="text-xl font-semibold mb-2">Exemplo 2: Cálculo de Comissão (Referências Absolutas)</h3>
+                     <p><strong>Objetivo:</strong> Calcular a comissão de vendas usando uma taxa fixa. A taxa de 5% está na célula <code class="formula">F1</code>. Usamos <code class="formula">$F$1</code> para que a referência não mude ao arrastar a fórmula.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th><th>...</th><th>F</th></tr></thead><tbody><tr class="cell-header"><td>Vendedor</td><td>Vendas</td><td>Comissão</td><td></td><td>Taxa Fixa</td></tr><tr><td>Ana</td><td>R$ 12.500</td><td class="highlight">R$ 625,00</td><td></td><td class="highlight">5%</td></tr><tr><td>Bruno</td><td>R$ 8.900</td><td class="highlight">R$ 445,00</td><td></td><td></td></tr><tr><td>Carla</td><td>R$ 15.200</td><td class="highlight">R$ 760,00</td><td></td><td></td></tr><tr><td>Daniel</td><td>R$ 9.800</td><td class="highlight">R$ 490,00</td><td></td><td></td></tr><tr><td colspan="2" class="text-right text-sm">Fórmula em C2:</td><td colspan="3"><code class="formula">=B2*$F$1</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere o valor da "Taxa Fixa" para 7% e observe como todos os valores de comissão são recalculados automaticamente.</p>
+                    </div>
+                 </div>
+                 <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Preenchimento Automático de Séries</h3>
+                    <p><strong>Objetivo:</strong> Poupar tempo ao preencher sequências. Digite os dois primeiros itens, selecione-os e arraste pelo canto inferior direito.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><tbody><tr class="cell-header"><td>Sequência 1</td><td>Sequência 2</td><td>Sequência 3</td></tr><tr><td>jan</td><td>Segunda</td><td>2</td></tr><tr><td>fev</td><td>Terça</td><td>4</td></tr><tr><td>mar</td><td>Quarta</td><td>6</td></tr><tr><td>abr</td><td>Quinta</td><td>8</td></tr><tr><td>mai</td><td>Sexta</td><td>10</td></tr><tr><td>jun</td><td>...</td><td>12</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Crie uma nova coluna. Nela, digite "1" na primeira célula e "3" na segunda. Use o preenchimento automático para criar uma sequência de números ímpares.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 6: Múltiplas Planilhas e AutoFiltro -->
+            <section id="modulo6" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 6: Múltiplas Planilhas e AutoFiltro</h2>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Filtrando Despesas Mensais</h3>
+                    <p><strong>Objetivo:</strong> Visualizar apenas um tipo específico de despesa a partir de uma lista completa. Ative o filtro em <code class="formula">Dados > Filtro</code>.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A ▼</th><th>B ▼</th><th>C ▼</th></tr></thead><tbody><tr class="cell-header"><td>Despesas</td><td>Prestações</td><td>Valor</td></tr><tr class="highlight"><td>Internet</td><td>Mensal</td><td>R$ 69,90</td></tr><tr class="highlight"><td>Telefone</td><td>Mensal</td><td>R$ 49,90</td></tr><tr class="highlight"><td>Condomínio</td><td>Mensal</td><td>R$ 150,00</td></tr><tr><td colspan="3" class="text-sm"><strong>Filtro aplicado:</strong> Coluna "Prestações" = "Mensal". A tabela original contém outras despesas como Supermercado, Farmácia, etc.</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Limpe o filtro atual e aplique um novo para mostrar apenas as despesas com "Valor" superior a R$ 100,00.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Filtrando Catálogo de Produtos</h3>
+                    <p><strong>Objetivo:</strong> Encontrar produtos de uma categoria específica e dentro de uma faixa de preço. Múltiplos filtros podem ser aplicados simultaneamente.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Produto ▼</th><th>Categoria ▼</th><th>Preço ▼</th></tr></thead><tbody><tr><td>Mouse Simples</td><td>Periféricos</td><td>R$ 29,90</td></tr><tr class="highlight"><td>Mouse Gamer</td><td>Periféricos</td><td>R$ 150,00</td></tr><tr><td>Teclado</td><td>Periféricos</td><td>R$ 89,90</td></tr><tr class="highlight"><td>Headset</td><td>Periféricos</td><td>R$ 250,00</td></tr><tr><td>Monitor 24"</td><td>Monitores</td><td>R$ 899,00</td></tr><tr><td colspan="3" class="text-sm"><strong>Resultado do Filtro:</strong> Categoria = "Periféricos", Preço &gt; 100</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um terceiro filtro para que, além dos critérios atuais, sejam mostrados apenas produtos cujo nome contenha a palavra "Mouse".</p>
+                    </div>
+                </div>
+                 <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Organizando Vendas em Abas</h3>
+                    <p><strong>Objetivo:</strong> Manter a organização com dados de cada mês em sua própria planilha (aba). Isso facilita a consulta e a criação de resumos.</p>
+                    <div class="flex items-center justify-center p-4 bg-gray-100 rounded-md">
+                        <div class="bg-white p-2 rounded-t-lg border border-b-0">Plan_Resumo</div>
+                        <div class="bg-gray-200 p-2 rounded-t-lg border border-b-0 ml-1">Plan_Jan</div>
+                        <div class="bg-gray-200 p-2 rounded-t-lg border border-b-0 ml-1">Plan_Fev</div>
+                        <div class="bg-gray-200 p-2 rounded-t-lg border border-b-0 ml-1">Plan_Mar</div>
+                        <div class="bg-gray-200 p-2 rounded-t-lg border border-b-0 ml-1">...</div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Renomeie a aba "Plan_Fev" para "Fevereiro". Depois, clique com o botão direito sobre ela e altere a cor da guia para vermelho.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 7: Funções Básicas -->
+            <section id="modulo7" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 7: Funções Básicas</h2>
+                
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Resumo Estatístico de Vendas</h3>
+                    <p><strong>Objetivo:</strong> Obter rapidamente os principais indicadores de uma lista de vendas.</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Vendas (R$)</th></tr></thead><tbody><tr><td>1.500,00</td></tr><tr><td>2.000,00</td></tr><tr><td>1.200,00</td></tr><tr><td>2.500,00</td></tr><tr><td>1.600,00</td></tr><tr><td>3.100,00</td></tr><tr><td>950,00</td></tr></tbody></table></div>
+                        <div class="overflow-x-auto"><table class="table-excel"><tbody><tr class="cell-header"><td colspan="2">Análise</td></tr><tr><td><strong>Total de Vendas</strong></td><td class="highlight">R$ 12.850,00</td></tr><tr><td><strong>Média de Vendas</strong></td><td class="highlight">R$ 1.835,71</td></tr><tr><td><strong>Maior Venda</strong></td><td class="highlight">R$ 3.100,00</td></tr><tr><td><strong>Menor Venda</strong></td><td class="highlight">R$ 950,00</td></tr><tr><td class="text-sm">Fórmula Total:</td><td class="text-sm"><code class="formula">=SOMA(A2:A8)</code></td></tr><tr><td class="text-sm">Fórmula Média:</td><td class="text-sm"><code class="formula">=MÉDIA(A2:A8)</code></td></tr><tr><td class="text-sm">Fórmula Maior:</td><td class="text-sm"><code class="formula">=MÁXIMO(A2:A8)</code></td></tr><tr><td class="text-sm">Fórmula Menor:</td><td class="text-sm"><code class="formula">=MÍNIMO(A2:A8)</code></td></tr></tbody></table></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Em uma nova área, digite 3 novos valores de vendas (ex: 500, 4000, 2100). Calcule a SOMA e a MÉDIA para estes novos valores.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Contagem de Itens em Estoque</h3>
+                    <p><strong>Objetivo:</strong> Contar quantos tipos de produtos existem, quantos estão com estoque numérico definido e quantos estão sem informação.</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Produto</th><th>Estoque</th></tr></thead><tbody><tr><td>Teclado</td><td>50</td></tr><tr><td>Mouse</td><td>120</td></tr><tr><td>Monitor</td><td></td></tr><tr><td>Webcam</td><td>35</td></tr><tr><td>HD Externo</td><td>Não se aplica</td></tr><tr><td>Gabinete</td><td>15</td></tr></tbody></table></div>
+                        <div class="overflow-x-auto"><table class="table-excel"><tbody><tr class="cell-header"><td colspan="2">Análise de Contagem</td></tr><tr><td><strong>Itens com Estoque (Numérico)</strong></td><td class="highlight">4</td></tr><tr><td><strong>Itens Preenchidos (Qualquer Valor)</strong></td><td class="highlight">6</td></tr><tr><td><strong>Itens Vazios</strong></td><td class="highlight">1</td></tr><tr><td class="text-sm">Fórmula Numérico:</td><td class="text-sm"><code class="formula">=CONT.NÚM(B2:B7)</code></td></tr><tr><td class="text-sm">Fórmula Preenchidos:</td><td class="text-sm"><code class="formula">=CONT.VALORES(A2:B7)</code></td></tr><tr><td class="text-sm">Fórmula Vazios:</td><td class="text-sm"><code class="formula">=CONTAR.VAZIO(B2:B7)</code></td></tr></tbody></table></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um novo produto "Mousepad" com o estoque em branco. Verifique como os resultados das funções de contagem se alteram.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Boletim Escolar com Status Múltiplo</h3>
+                    <p><strong>Objetivo:</strong> Automatizar o cálculo da média e determinar a situação do aluno com 3 possibilidades: Aprovado (>=7), Recuperação (>=5 e <7) e Reprovado (<5).</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Aluno</th><th>Nota 1</th><th>Nota 2</th><th>Média</th><th>Situação</th></tr></thead><tbody><tr class="cell-header"><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr><tr><td>Alice</td><td>10,0</td><td>8,0</td><td class="highlight">9,0</td><td style="background-color:#a7f3d0">Aprovado</td></tr><tr><td>Bernardo</td><td>9,0</td><td>5,0</td><td class="highlight">7,0</td><td style="background-color:#a7f3d0">Aprovado</td></tr><tr><td>Carla</td><td>6,0</td><td>6,5</td><td class="highlight">6,3</td><td style="background-color:#fef08a">Recuperação</td></tr><tr><td>Daniel</td><td>4,0</td><td>5,0</td><td class="highlight">4,5</td><td style="background-color:#fecaca">Reprovado</td></tr><tr><td colspan="4" class="text-right text-sm">Fórmula de Status (SE Aninhado):</td><td class="text-sm"><code class="formula">=SE(D2>=7;"Aprovado";SE(D2>=5;"Recuperação";"Reprovado"))</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere a nota 2 de Carla para 8,0. Observe como sua Média e Situação são atualizadas automaticamente pela fórmula.</p>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 4: Verificação de Bônus de Vendas</h3>
+                    <p><strong>Objetivo:</strong> Conceder um bônus apenas se o vendedor atingir a meta de vendas E a nota de satisfação do cliente.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Vendedor</th><th>Vendas (R$)</th><th>Nota Cliente</th><th>Bônus?</th></tr></thead><tbody><tr class="cell-header"><td>...</td><td>Meta: >10.000</td><td>Meta: >8</td><td>...</td></tr><tr><td>Ana</td><td>12.500</td><td>9</td><td class="highlight">Sim</td></tr><tr><td>Bruno</td><td>8.900</td><td>9</td><td class="highlight">Não</td></tr><tr><td>Carla</td><td>15.200</td><td>7</td><td class="highlight">Não</td></tr><tr><td>Daniel</td><td>11.000</td><td>8.5</td><td class="highlight">Sim</td></tr><tr><td colspan="3" class="text-right text-sm">Fórmula (SE com E):</td><td class="text-sm"><code class="formula">=SE(E(B2>10000;C2>8);"Sim";"Não")</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um novo vendedor, "Eduarda", com Vendas de 10.500 e Nota Cliente de 7.5. Aplique a fórmula e veja por que ela não recebe o bônus.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 5: Elegibilidade para Desconto Especial</h3>
+                    <p><strong>Objetivo:</strong> Oferecer um desconto se o cliente for membro do clube OU se a compra for acima de R$ 500.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Cliente</th><th>Valor Compra</th><th>Membro?</th><th>Desconto?</th></tr></thead><tbody><tr><td>João</td><td>R$ 450</td><td>Sim</td><td class="highlight">Sim</td></tr><tr><td>Maria</td><td>R$ 600</td><td>Não</td><td class="highlight">Sim</td></tr><tr><td>Carlos</td><td>R$ 300</td><td>Não</td><td class="highlight">Não</td></tr><tr><td>Ana</td><td>R$ 1.200</td><td>Sim</td><td class="highlight">Sim</td></tr><tr><td colspan="3" class="text-right text-sm">Fórmula (SE com OU):</td><td class="text-sm"><code class="formula">=SE(OU(C2="Sim";B2>500);"Sim";"Não")</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Mude a fórmula para que o desconto seja concedido apenas se o cliente for membro E a compra for acima de R$ 500. Quem ainda teria o desconto?</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 6: Análise de Vendas por Vendedor</h3>
+                    <p><strong>Objetivo:</strong> Calcular o total vendido por um vendedor específico e quantas vendas ele realizou em uma lista longa.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Vendedor</th><th>Valor Venda</th><th>...</th><th>Vendedor a Analisar:</th><td class="highlight">Ana</td></tr></thead><tbody><tr><td>Ana</td><td>R$ 1.500</td><td></td><th>Total Vendido:</th><td class="highlight">R$ 4.300</td></tr><tr><td>Bruno</td><td>R$ 2.000</td><td></td><th>Nº de Vendas:</th><td class="highlight">3</td></tr><tr><td>Ana</td><td>R$ 1.200</td><td></td><td class="text-sm" colspan="2">Fórmula Total: <code class="formula">=SOMASE(A2:A6;E1;B2:B6)</code></td></tr><tr><td>Carla</td><td>R$ 2.500</td><td></td><td class="text-sm" colspan="2">Fórmula Nº Vendas: <code class="formula">=CONT.SE(A2:A6;E1)</code></td></tr><tr><td>Ana</td><td>R$ 1.600</td><td></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere o "Vendedor a Analisar" para "Bruno" e veja os resultados mudarem. Quantas vendas ele fez e qual o total?</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 7: Análise de Vendas com Múltiplos Critérios</h3>
+                    <p><strong>Objetivo:</strong> Somar as vendas de um produto específico, por um vendedor específico, em uma região específica.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Vendedor</th><th>Produto</th><th>Região</th><th>Vendas</th></tr></thead><tbody><tr><td>Ana</td><td>Notebook</td><td>SP</td><td>R$ 5.000</td></tr><tr><td>Bia</td><td>Notebook</td><td>RJ</td><td>R$ 4.500</td></tr><tr><td>Ana</td><td>Monitor</td><td>SP</td><td>R$ 1.200</td></tr><tr><td>Ana</td><td>Notebook</td><td>SP</td><td>R$ 5.200</td></tr><tr><td>Carlos</td><td>Notebook</td><td>SP</td><td>R$ 4.800</td></tr><tr><td colspan="3"><strong>Vendas de Notebook por Ana em SP:</strong></td><td class="highlight">R$ 10.200</td></tr><tr><td colspan="3" class="text-right text-sm">Fórmula (SOMASES):</td><td class="text-sm"><code class="formula">=SOMASES(D2:D6; A2:A6; "Ana"; B2:B6; "Notebook"; C2:C6; "SP")</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Usando a mesma tabela, escreva uma fórmula para calcular o total de vendas de "Notebook" feitas por "Carlos" na região "SP".</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 8: Média de Preços por Categoria</h3>
+                     <p><strong>Objetivo:</strong> Calcular o preço médio de produtos apenas de uma categoria específica.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>...</th><th>Categoria:</th><td class="highlight">Periféricos</td></tr></thead><tbody><tr><td>Notebook</td><td>Computadores</td><td>R$ 5.200</td><td></td><th>Preço Médio:</th><td class="highlight">R$ 123,27</td></tr><tr><td>Teclado</td><td>Periféricos</td><td>R$ 89,90</td><td></td><td class="text-sm" colspan="2">Fórmula Média: <code class="formula">=MÉDIASE(B2:B6;E1;C2:C6)</code></td></tr><tr><td>Mouse</td><td>Periféricos</td><td>R$ 29,90</td></tr><tr><td>Monitor</td><td>Monitores</td><td>R$ 899,00</td></tr><tr><td>Headset</td><td>Periféricos</td><td>R$ 250,00</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Calcule o preço médio para a categoria "Computadores". O que acontece se você tentar calcular a média para uma categoria que não existe, como "Acessórios"?</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                     <h3 class="text-xl font-semibold mb-2">Exemplo 9: Consulta de Produtos (PROCV)</h3>
+                    <p><strong>Objetivo:</strong> Criar um buscador que retorna o nome e o preço de um produto ao digitar seu código.</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div><h4 class="font-medium">Tabela de Produtos (Matriz de Dados)</h4><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr class="cell-header"><td>Código</td><td>Produto</td><td>Preço</td></tr><tr><td>1</td><td>Teclado</td><td>R$ 89,90</td></tr><tr class="highlight"><td>2</td><td>Mouse</td><td>R$ 29,90</td></tr><tr><td>3</td><td>Monitor</td><td>R$ 459,00</td></tr><tr><td>4</td><td>Tablet</td><td>R$ 299,90</td></tr><tr><td>5</td><td>Notebook</td><td>R$ 899,90</td></tr></tbody></table></div>
+                        <div><h4 class="font-medium">Área de Consulta</h4><table class="table-excel"><thead><tr><th>E</th><th>F</th></tr></thead><tbody><tr><td>Digite o Código:</td><td class="highlight">2</td></tr><tr><td>Produto:</td><td class="highlight">Mouse</td></tr><tr><td>Preço:</td><td class="highlight">R$ 29,90</td></tr><tr><td class="text-sm">Fórmula (Produto):</td><td class="text-sm"><code class="formula">=PROCV(F1;A2:C6;2;FALSO)</code></td></tr><tr><td class="text-sm">Fórmula (Preço):</td><td class="text-sm"><code class="formula">=PROCV(F1;A2:C6;3;FALSO)</code></td></tr></tbody></table></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Na área de consulta, digite o código "4" para ver as informações do "Tablet" aparecerem automaticamente.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 10: Consulta de Vendas por Mês (PROCH)</h3>
+                    <p><strong>Objetivo:</strong> Buscar o valor de vendas de um determinado mês em uma tabela onde os meses estão na horizontal.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th></th><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th></tr></thead><tbody><tr><td>Vendas</td><td>10.500</td><td>9.800</td><td>11.200</td><td>10.800</td></tr><tr><td>Custos</td><td>6.000</td><td>5.800</td><td>6.500</td><td>6.200</td></tr><tr><td colspan="5"> </td></tr><tr><td colspan="2"><strong>Mês a Consultar:</strong></td><td class="highlight">Mar</td><td><strong>Vendas do Mês:</strong></td><td class="highlight">11.200</td></tr><tr><td colspan="4" class="text-right text-sm">Fórmula (PROCH):</td><td class="text-sm"><code class="formula">=PROCH(C5;B1:E3;2;FALSO)</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Modifique a fórmula para buscar os "Custos" do mês de "Mar" em vez das "Vendas". (Dica: altere o número do índice da linha).</p>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 11: Consulta Avançada de Funcionários (ÍNDICE/CORRESP)</h3>
+                    <p><strong>Objetivo:</strong> Buscar um dado (e.g. Salário) com base em outro (e.g. Nome), mesmo que a coluna de busca não seja a primeira da tabela. É uma alternativa mais flexível ao PROCV.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>ID</th><th>Nome</th><th>Departamento</th><th>Salário</th></tr></thead><tbody><tr><td>101</td><td>Ana</td><td>Vendas</td><td>R$ 4.500</td></tr><tr><td>102</td><td>Bruno</td><td>TI</td><td>R$ 5.800</td></tr><tr><td>103</td><td>Carla</td><td>Vendas</td><td>R$ 4.800</td></tr><tr><td colspan="4"> </td></tr><tr><td colspan="2"><strong>Nome do Funcionário:</strong></td><td class="highlight">Bruno</td><td><strong>Salário:</strong> <span class="highlight">R$ 5.800</span></td></tr><tr><td colspan="3" class="text-right text-sm">Fórmula:</td><td class="text-sm"><code class="formula">=ÍNDICE(D2:D4;CORRESP(C6;B2:B4;0))</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Altere a fórmula para que, ao digitar o nome "Carla", o resultado seja seu "Departamento" em vez do salário.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 12: Tratamento de Erros em Cálculos</h3>
+                    <p><strong>Objetivo:</strong> Evitar erros como #DIV/0! em planilhas, mostrando uma mensagem amigável ou um valor padrão.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Receita</th><th>Visitantes</th><th>Receita por Visitante</th></tr></thead><tbody><tr><td>R$ 5.000</td><td>1.000</td><td class="highlight">R$ 5,00</td></tr><tr><td>R$ 3.500</td><td>0</td><td class="highlight">Inválido</td></tr><tr><td>R$ 4.200</td><td>800</td><td class="highlight">R$ 5,25</td></tr><tr><td colspan="2" class="text-right text-sm">Fórmula (SEERRO):</td><td class="text-sm"><code class="formula">=SEERRO(A2/B2; "Inválido")</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Mude a fórmula para que, em caso de erro, a célula exiba o número 0 em vez da palavra "Inválido".</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 13: Funções de Data e Hora</h3>
+                    <p><strong>Objetivo:</strong> Inserir datas dinâmicas e extrair partes de uma data para relatórios.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><tbody><tr class="cell-header"><td>Função</td><td>Exemplo</td><td>Resultado</td></tr><tr><td>HOJE</td><td><code class="formula">=HOJE()</code></td><td>(retorna a data atual)</td></tr><tr><td>AGORA</td><td><code class="formula">=AGORA()</code></td><td>(retorna data e hora atuais)</td></tr><tr><td>DIA</td><td><code class="formula">=DIA("15/09/2023")</code></td><td>15</td></tr><tr><td>MÊS</td><td><code class="formula">=MÊS("15/09/2023")</code></td><td>9</td></tr><tr><td>ANO</td><td><code class="formula">=ANO("15/09/2023")</code></td><td>2023</td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Em uma célula vazia, crie uma fórmula que mostre sempre a data de "amanhã". (Dica: <code class="formula">=HOJE()+1</code>).</p>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 14: Calculando Prazos de Projetos</h3>
+                    <p><strong>Objetivo:</strong> Calcular a data de término de um projeto, considerando apenas os dias úteis (descontando fins de semana).</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Tarefa</th><th>Data Início</th><th>Duração (dias úteis)</th><th>Data Término</th></tr></thead><tbody><tr><td>Fase 1</td><td>01/09/2023</td><td>10</td><td class="highlight">14/09/2023</td></tr><tr><td>Fase 2</td><td>15/09/2023</td><td>15</td><td class="highlight">06/10/2023</td></tr><tr><td colspan="3" class="text-right text-sm">Fórmula (DIATRABALHOTOTAL):</td><td class="text-sm"><code class="formula">=DIATRABALHOTOTAL(B2;C2)</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Calcule a data de término da Fase 1, mas desta vez, adicione um feriado no dia 07/09/2023, usando o argumento opcional [feriados] da função.</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 15: Manipulação de Texto (Limpeza e Concatenação)</h3>
+                    <p><strong>Objetivo:</strong> Limpar nomes com espaços extras e juntar nome e sobrenome em uma única célula.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Nome</th><th>Sobrenome</th><th>Nome Completo Limpo</th></tr></thead><tbody><tr><td>   joão </td><td>SILVA</td><td class="highlight">João Silva</td></tr><tr><td>maria</td><td>  SOUZA</td><td class="highlight">Maria Souza</td></tr><tr><td colspan="2" class="text-right text-sm">Fórmula:</td><td class="text-sm"><code class="formula">=PRI.MAIÚSCULA(ARRUMAR(A2))&" "&PRI.MAIÚSCULA(ARRUMAR(B2))</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Use a função <code class="formula">CONCAT</code> ou o operador <code class="formula">&</code> para juntar três células: Rua, Número e Bairro em um único campo "Endereço Completo".</p>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 16: Extração de Informações de Texto</h3>
+                    <p><strong>Objetivo:</strong> Separar partes de um código de produto (Tipo, ID e Região) em colunas diferentes.</p>
+                    <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>Código</th><th>Tipo</th><th>ID</th><th>Região</th></tr></thead><tbody><tr><td>PROD-1234-SP</td><td class="highlight">PROD</td><td class="highlight">1234</td><td class="highlight">SP</td></tr><tr><td>SERV-5678-RJ</td><td class="highlight">SERV</td><td class="highlight">5678</td><td class="highlight">RJ</td></tr><tr><td class="text-right text-sm">Fórmula Tipo:</td><td class="text-sm"><code class="formula">=ESQUERDA(A2;4)</code></td><td class="text-sm"><code class="formula">=EXT.TEXTO(A2;6;4)</code></td><td class="text-sm"><code class="formula">=DIREITA(A2;2)</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Dado o código "FAT-987-MG", escreva as fórmulas para extrair "FAT", "987" e "MG".</p>
+                    </div>
+                </div>
+
+            </section>
+            
+            <!-- Módulo 8: Vínculos -->
+            <section id="modulo8" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 8: Vínculos</h2>
+                 <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Painel de Vendas Resumido</h3>
+                    <p><strong>Objetivo:</strong> Criar um painel (dashboard) que busca o total de vendas de outra planilha. Se o valor na origem mudar, o painel é atualizado instantaneamente.</p>
+                    <p>Use <code class="formula">Copiar > Colar Especial > Colar Vínculo</code>. A fórmula ficará como <code class="formula">=Vendas_Detalhadas!$E$50</code>.</p>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Imagine que a célula de total de vendas está em outra pasta de trabalho (outro arquivo) chamada "Relatorio_Vendas.xlsx". Como a fórmula do vínculo seria diferente?</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Resumo Financeiro Anual</h3>
+                    <p><strong>Objetivo:</strong> Consolidar os totais de despesas de abas mensais (Jan, Fev, Mar...) em uma única planilha de resumo anual.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr class="cell-header"><td>Mês</td><td>Total Despesas</td></tr><tr><td>Janeiro</td><td class="highlight">R$ 2.540,00</td></tr><tr><td>Fevereiro</td><td class="highlight">R$ 2.890,00</td></tr><tr><td>Março</td><td class="highlight">R$ 2.650,00</td></tr><tr><td>Abril</td><td class="highlight">R$ 3.110,00</td></tr><tr><td class="text-sm">Fórmula em B2:</td><td class="text-sm"><code class="formula">=Jan!G20</code></td></tr><tr><td class="text-sm">Fórmula em B3:</td><td class="text-sm"><code class="formula">=Fev!G20</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione a linha "Maio" na tabela de resumo e crie o vínculo para buscar o total de despesas da célula G20 da planilha "Mai".</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Painel de Indicadores (Dashboard)</h3>
+                    <p><strong>Objetivo:</strong> Criar uma tela principal com os indicadores mais importantes (KPIs), vinculados a diferentes células de outras planilhas.</p>
+                     <div class="overflow-x-auto"><table class="table-excel"><tbody><tr class="cell-header"><td colspan="2">Painel de Controle</td></tr><tr><td>Total de Vendas:</td><td class="highlight">R$ 150.800,00</td></tr><tr><td>Novos Clientes:</td><td class="highlight">42</td></tr><tr><td>Custo Médio por Aquisição:</td><td class="highlight">R$ 35,90</td></tr><tr><td>Taxa de Conversão:</td><td class="highlight">4.5%</td></tr><tr><td class="text-sm">Célula B2 vinculada a <code class="formula">Vendas!F50</code></td><td class="text-sm">Célula B3 vinculada a <code class="formula">Clientes!C100</code></td></tr></tbody></table></div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um novo indicador ao painel, "Satisfação do Cliente", e crie um vínculo para uma célula fictícia <code class="formula">Pesquisas!B5</code>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 9: Gráficos -->
+            <section id="modulo9" class="mb-12 bg-white p-8 rounded-lg shadow-sm">
+                <h2 class="text-3xl font-semibold text-green-800 border-b-2 border-green-200 pb-2 mb-4">Módulo 9: Gráficos</h2>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 1: Gráfico de Colunas (Vendas por Região)</h3>
+                    <p><strong>Objetivo:</strong> Comparar visualmente o volume de vendas entre diferentes regiões. Ideal para dados categóricos.</p>
+                    <div class="grid md:grid-cols-2 gap-4 items-start">
+                        <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr class="cell-header"><td>Região</td><td>Vendas (R$)</td></tr><tr><td>São Paulo</td><td>17.503,00</td></tr><tr><td>Rio de Janeiro</td><td>10.681,00</td></tr><tr><td>Belo Horizonte</td><td>4.643,00</td></tr><tr><td>Salvador</td><td>3.587,00</td></tr><tr><td>Porto Alegre</td><td>3.533,00</td></tr></tbody></table></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h4 class="font-semibold text-center mb-2">Gráfico Simulado</h4><div class="mt-4 space-y-2"><div class="flex items-center"><div class="w-28 text-sm">São Paulo</div><div class="h-6 bg-blue-500 rounded" style="width: 100%;"></div></div><div class="flex items-center"><div class="w-28 text-sm">Rio de Janeiro</div><div class="h-6 bg-blue-500 rounded" style="width: 61%;"></div></div><div class="flex items-center"><div class="w-28 text-sm">Belo Horizonte</div><div class="h-6 bg-blue-500 rounded" style="width: 26%;"></div></div><div class="flex items-center"><div class="w-28 text-sm">Salvador</div><div class="h-6 bg-blue-500 rounded" style="width: 20%;"></div></div></div></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Selecione os dados da tabela. Vá em <code class="formula">Inserir > Gráficos</code> e altere o tipo de gráfico de Colunas para Barras.</p>
+                    </div>
+                </div>
+                <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 2: Gráfico de Pizza (Composição de Despesas)</h3>
+                    <p><strong>Objetivo:</strong> Mostrar a proporção de cada categoria de despesa em relação ao total. Excelente para entender a "fatia" de cada item.</p>
+                     <div class="grid md:grid-cols-2 gap-4 items-start">
+                        <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr class="cell-header"><td>Categoria</td><td>Valor (R$)</td></tr><tr><td>Moradia</td><td>1.200,00</td></tr><tr><td>Alimentação</td><td>850,00</td></tr><tr><td>Transporte</td><td>450,00</td></tr><tr><td>Lazer</td><td>300,00</td></tr><tr><td>Outros</td><td>200,00</td></tr></tbody></table></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h4 class="font-semibold text-center mb-2">Gráfico Simulado</h4><img src="https://placehold.co/400x200/E2E8F0/4A5568?text=Gráfico+de+Pizza" alt="[Imagem de um Gráfico de Pizza simulando despesas]" class="mx-auto rounded-lg"></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Após criar o gráfico de pizza, adicione rótulos de dados para que o valor percentual de cada fatia seja exibido diretamente no gráfico.</p>
+                    </div>
+                </div>
+                 <div class="example-card">
+                    <h3 class="text-xl font-semibold mb-2">Exemplo 3: Gráfico de Linha (Acompanhamento de Metas)</h3>
+                    <p><strong>Objetivo:</strong> Analisar a evolução de um indicador (como vendas) ao longo do tempo, comparando com a meta estabelecida.</p>
+                     <div class="grid md:grid-cols-2 gap-4 items-start">
+                        <div class="overflow-x-auto"><table class="table-excel"><thead><tr><th>A</th><th>B</th><th>C</th></tr></thead><tbody><tr class="cell-header"><td>Mês</td><td>Vendas (R$)</td><td>Meta (R$)</td></tr><tr><td>Jan</td><td>8.500</td><td>10.000</td></tr><tr><td>Fev</td><td>9.800</td><td>10.000</td></tr><tr><td>Mar</td><td>11.200</td><td>10.000</td></tr><tr><td>Abr</td><td>10.500</td><td>11.000</td></tr><tr><td>Mai</td><td>12.100</td><td>11.000</td></tr></tbody></table></div>
+                        <div class="bg-gray-100 p-4 rounded-lg"><h4 class="font-semibold text-center mb-2">Gráfico Simulado</h4><img src="https://placehold.co/400x200/E2E8F0/4A5568?text=Gráfico+de+Linha" alt="[Imagem de um Gráfico de Linha simulando metas]" class="mx-auto rounded-lg"></div>
+                    </div>
+                    <div class="desafio">
+                        <p><strong>Desafio:</strong> Adicione um título ao gráfico, como "Evolução de Vendas vs. Meta", para que ele fique mais claro e informativo.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                let intersectingId = null;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentTop = entry.boundingClientRect.top;
+                        if (intersectingId === null || currentTop < document.querySelector(`#${intersectingId}`).getBoundingClientRect().top) {
+                           intersectingId = entry.target.id;
+                        }
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-green-600', 'font-bold');
+                    link.classList.add('text-gray-600', 'font-medium');
+                    if (intersectingId && link.getAttribute('href').substring(1) === intersectingId) {
+                        link.classList.add('text-green-600', 'font-bold');
+                        link.classList.remove('text-gray-600');
+                    }
+                });
+
+            }, observerOptions);
+            sections.forEach(section => { observer.observe(section); });
+        });
+    </script>
+</body>
+</html>
+
