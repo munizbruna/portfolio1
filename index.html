@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Criativo | Seu Nome</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fira Code & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-icons@latest/dist/lucide.js"></script>
+
+    <style>
+        :root {
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --slate: #8892b0;
+            --light-slate: #ccd6f6;
+            --green: #64ffda;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy);
+            color: var(--slate);
+            padding: 10%;
+        }
+
+        h1, h2, h3, h4, .text-highlight {
+            color: var(--light-slate);
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Definição do container principal com Grid Layout */
+        .grid-container {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "header"
+                "hero"
+                "journey"
+                "skills"
+                "projects"
+                "contact";
+        }
+        
+        /* Layout para telas maiores */
+        @media (min-width: 1024px) {
+            .grid-container {
+                gap: 2rem 4rem;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-areas:
+                    "header  header  header  header  header"
+                    "hero    hero    hero    hero    hero"
+                    "journey journey skills  skills  skills"
+                    "projects projects projects projects projects"
+                    "contact contact contact contact contact";
+            }
+        }
+        
+        /* Associando seções às áreas do grid */
+        .grid-header { grid-area: header; }
+        .grid-hero { grid-area: hero; }
+        .grid-journey { grid-area: journey; }
+        .grid-skills { grid-area: skills; }
+        .grid-projects { grid-area: projects; }
+        .grid-contact { grid-area: contact; }
+        
+        /* Efeito de destaque sutil nos cards */
+        .card {
+            background-color: var(--light-navy);
+            border: 1px solid #1d2d50;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(100, 255, 218, 0.1), 0 4px 6px -2px rgba(100, 255, 218, 0.05);
+        }
+
+        /* Efeito no botão principal */
+        .cta-button {
+            background-color: transparent;
+            border: 1px solid var(--green);
+            color: var(--green);
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Animação do cursor no terminal */
+        .cursor {
+            display: inline-block;
+            background-color: var(--green);
+            width: 10px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; }
+            50% { background-color: var(--green); }
+        }
+
+        /* Estilos para a Linha do Tempo */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #1d2d50;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--green);
+            border: 3px solid var(--light-navy);
+        }
+
+        /* Efeito de hover e interatividade para projetos */
+        .project-card .project-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Estilos para os cards de tecnologia */
+        .tech-card {
+            background-color: var(--light-navy);
+            border-left: 4px solid var(--green);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .tech-card:hover {
+            transform: scale(1.05);
+            background-color: #1a2f4d;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="grid-container">
+
+            <!-- 1. Header -->
+            <header class="grid-header flex justify-between items-center py-4">
+                <a href="#" class="text-green text-2xl font-mono font-bold">SN()</a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#journey" class="hover:text-green transition-colors">01. Jornada</a>
+                    <a href="#projects" class="hover:text-green transition-colors">02. Projetos</a>
+                    <a href="#contact" class="hover:text-green transition-colors">03. Contato</a>
+                </nav>
+            </header>
+
+            <!-- 2. Seção Hero (Terminal) -->
+            <section class="grid-hero min-h-[50vh] flex items-center">
+                <div class="w-full">
+                    <p class="font-mono text-green mb-4">Olá, meu nome é</p>
+                    <h1 class="text-4xl md:text-7xl font-extrabold text-highlight">Seu Nome.</h1>
+                    <h2 class="text-4xl md:text-7xl font-extrabold text-slate mb-6">Eu construo para a web.</h2>
+                    <div class="font-mono text-lg md:text-xl text-slate bg-gray-900/50 p-4 rounded-md">
+                        <span class="text-green mr-2">$</span>
+                        <span id="terminal-text"></span>
+                        <span class="cursor">&nbsp;</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 3. Seção Jornada (Linha do Tempo) -->
+            <section id="journey" class="grid-journey py-16">
+                <h3 class="text-3xl font-bold text-highlight mb-8">Minha Jornada</h3>
+                <div>
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-mono text-sm text-green mb-1">2022 - Presente</p>
+                        <h4 class="font-bold text-highlight mb-1">Desenvolvedor Full-Stack @ Empresa Inc.</h4>
+                        <p class="text-sm">Desenvolvimento e manutenção de aplicações web complexas utilizando React, Node.js e arquitetura de microsserviços.</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-mono text-sm text-green mb-1">2020 - 2022</p>
+                        <h4 class="font-bold text-highlight mb-1">Desenvolvedor Frontend @ Startup X</h4>
+                        <p class="text-sm">Criação de interfaces de usuário interativas e responsivas para produtos SaaS, focando na experiência do usuário.</p>
+                    </div>
+                     <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="font-mono text-sm text-green mb-1">2019</p>
+                        <h4 class="font-bold text-highlight mb-1">Início dos Estudos</h4>
+                        <p class="text-sm">Comecei minha jornada na programação, explorando HTML, CSS e JavaScript, construindo meus primeiros projetos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Seção de Habilidades -->
+            <section id="skills" class="grid-skills py-16">
+                <h3 class="text-3xl font-bold text-highlight mb-8">Tecnologias</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">JavaScript (ES6+)</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">React</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">Node.js</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">TypeScript</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">Next.js</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">Tailwind CSS</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">PostgreSQL</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">Docker</span></div>
+                    <div class="tech-card rounded p-4"><span class="font-medium text-light-slate">Figma</span></div>
+                </div>
+            </section>
+
+            <!-- 5. Seção de Projetos -->
+            <section id="projects" class="grid-projects col-span-full py-16">
+                <h3 class="text-3xl font-bold text-highlight text-center mb-8">Projetos que Construí</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Projeto 1 -->
+                    <div class="card project-card rounded-lg overflow-hidden block relative cursor-pointer" data-project="1">
+                        <img src="https://placehold.co/600x400/0a192f/8892b0?text=Projeto+1" alt="Imagem do Projeto 1" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-navy/80 p-6 flex flex-col justify-end pointer-events-none">
+                            <h4 class="text-xl font-bold text-highlight mb-2">Plataforma de E-commerce B2B</h4>
+                            <p class="text-sm text-slate">Clique para ver detalhes.</p>
+                        </div>
+                    </div>
+                    <!-- Projeto 2 -->
+                    <div class="card project-card rounded-lg overflow-hidden block relative cursor-pointer" data-project="2">
+                        <img src="https://placehold.co/600x400/0a192f/8892b0?text=Projeto+2" alt="Imagem do Projeto 2" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-navy/80 p-6 flex flex-col justify-end pointer-events-none">
+                            <h4 class="text-xl font-bold text-highlight mb-2">App de Gerenciamento de Tarefas</h4>
+                            <p class="text-sm text-slate">Clique para ver detalhes.</p>
+                        </div>
+                    </div>
+                    <!-- Projeto 3 -->
+                    <div class="card project-card rounded-lg overflow-hidden block relative cursor-pointer" data-project="3">
+                        <img src="https://placehold.co/600x400/0a192f/8892b0?text=Projeto+3" alt="Imagem do Projeto 3" class="w-full h-full object-cover">
+                        <div class="project-overlay absolute inset-0 bg-navy/80 p-6 flex flex-col justify-end pointer-events-none">
+                            <h4 class="text-xl font-bold text-highlight mb-2">Portfólio de Fotografia</h4>
+                            <p class="text-sm text-slate">Clique para ver detalhes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Seção de Contato -->
+            <section id="contact" class="grid-contact col-span-full text-center py-24">
+                 <p class="font-mono text-green mb-4">04. Qual o próximo passo?</p>
+                 <h3 class="text-4xl font-bold text-highlight mb-4">Entre em Contato</h3>
+                 <p class="text-slate mb-8 max-w-xl mx-auto">Estou atualmente em busca de novas oportunidades e minha caixa de entrada está sempre aberta. Se tiver uma pergunta ou apenas quiser dizer um oi, farei o meu melhor para responder!</p>
+                 <a href="mailto:seuemail@exemplo.com" class="cta-button font-mono inline-block py-4 px-8 rounded-md">
+                    Dizer Olá
+                 </a>
+            </section>
+
+            <!-- 7. Footer -->
+            <footer class="col-span-full text-center py-6">
+                <p class="font-mono text-sm text-slate">&copy; 2024 Construído por Seu Nome</p>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- Modal Backdrop -->
+    <div id="project-modal-backdrop" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden"></div>
+
+    <!-- Modal -->
+    <div id="project-modal" class="fixed inset-0 flex items-center justify-center p-4 z-50 hidden">
+        <div class="card w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg relative">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-slate hover:text-green z-10">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <div id="modal-content" class="p-8 md:p-12">
+                <!-- Conteúdo do modal será injetado aqui -->
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Dados dos projetos
+            const projectsData = {
+                1: {
+                    title: "Plataforma de E-commerce B2B",
+                    tags: ["React", "Node.js", "PostgreSQL", "Docker"],
+                    description: "Desenvolvido para otimizar o processo de compras entre empresas, esta plataforma robusta conta com um sistema de cotações em tempo real, integração com gateways de pagamento e um painel administrativo completo.",
+                    sourceCodeLink: "#",
+                    demoLink: "#",
+                    collaborators: [
+                        { name: "Ana Silva", role: "UI/UX Designer" },
+                        { name: "Carlos Souza", role: "Backend Developer" },
+                        { name: "Beatriz Lima", role: "QA Engineer" },
+                    ]
+                },
+                2: {
+                    title: "Aplicativo de Gerenciamento de Tarefas",
+                    tags: ["Next.js", "TypeScript", "Firebase"],
+                    description: "Este aplicativo ajuda equipes a se manterem organizadas com quadros no estilo Kanban, listas de tarefas e calendários integrados. O uso do Firebase garante sincronização em tempo real entre todos os dispositivos.",
+                    sourceCodeLink: "#",
+                    demoLink: "#",
+                    collaborators: [
+                        { name: "Daniel Alves", role: "Project Manager" },
+                        { name: "Fernanda Costa", role: "Frontend Developer" },
+                    ]
+                },
+                3: {
+                    title: "Website para Portfólio de Fotografia",
+                    tags: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+                    description: "Um website visualmente impactante para um fotógrafo profissional, focado em performance e animações fluidas para exibir o trabalho de forma elegante. A biblioteca GSAP foi utilizada para criar transições de página e efeitos de scroll imersivos.",
+                    sourceCodeLink: "#",
+                    demoLink: "#",
+                    collaborators: [
+                        { name: "Helena Martins", role: "Fotógrafa (Cliente)" },
+                    ]
+                }
+            };
+
+            // Elementos do Modal
+            const modal = document.getElementById('project-modal');
+            const modalBackdrop = document.getElementById('project-modal-backdrop');
+            const modalContent = document.getElementById('modal-content');
+            const closeBtn = document.getElementById('modal-close-btn');
+
+            // Função para popular e abrir o modal
+            const openModal = (projectId) => {
+                const project = projectsData[projectId];
+                if (!project) return;
+
+                const tagsHtml = project.tags.map(tag => 
+                    `<span class="bg-gray-700/50 text-green font-mono text-xs font-medium px-3 py-1 rounded-full">${tag}</span>`
+                ).join('');
+
+                const collaboratorsHtml = project.collaborators.map(person => `
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-slate/10 p-2 rounded-full">
+                           <i data-lucide="user" class="w-5 h-5 text-green"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-highlight text-sm">${person.name}</p>
+                            <p class="text-slate text-xs">${person.role}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                modalContent.innerHTML = `
+                    <h3 class="text-3xl font-bold text-highlight mb-2">${project.title}</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">${tagsHtml}</div>
+                    <p class="mb-6">${project.description}</p>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="${project.sourceCodeLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-flex items-center text-sm py-2 px-4 rounded-md">
+                            Código Fonte
+                            <i data-lucide="github" class="w-4 h-4 ml-2"></i>
+                        </a>
+                        <a href="${project.demoLink}" target="_blank" rel="noopener noreferrer" class="cta-button inline-flex items-center text-sm py-2 px-4 rounded-md">
+                            Ver Demonstração
+                            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                    <h4 class="text-xl font-bold text-highlight mb-4 border-t border-slate/20 pt-6">Colaboradores</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">${collaboratorsHtml}</div>
+                `;
+                
+                modal.classList.remove('hidden');
+                modalBackdrop.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+
+                lucide.createIcons();
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modalBackdrop.classList.add('hidden');
+                document.body.style.overflow = '';
+            };
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = card.dataset.project;
+                    openModal(projectId);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modalBackdrop.addEventListener('click', closeModal);
+
+            const terminalText = document.getElementById('terminal-text');
+            const textToType = "Desenvolvedor Full-Stack apaixonado por criar soluções inovadoras.";
+            let index = 0;
+
+            function type() {
+                if (index < textToType.length) {
+                    terminalText.textContent += textToType.charAt(index);
+                    index++;
+                    setTimeout(type, 60);
+                }
+            }
+            
+            setTimeout(type, 1000);
+        });
+    </script>
+</body>
+</html>
+

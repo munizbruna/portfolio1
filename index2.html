@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seu Nome - Desenvolvedor Full Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        overflow-x: hidden;
+        background: #0a0a0a;
+      }
+
+      /* Animated Background */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(45deg, #1a0033, #0d1b2a, #0f0f23, #001122);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      .animated-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(120, 219, 255, 0.3) 0%,
+            transparent 50%
+          );
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-30px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(30px) rotate(240deg);
+        }
+      }
+
+      /* Glassmorphism Effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Creative Grid */
+      .creative-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        perspective: 1000px;
+      }
+
+      /* 3D Project Cards */
+      .project-card-3d {
+        position: relative;
+        height: 400px;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        cursor: pointer;
+      }
+
+      .project-card-3d:hover {
+        transform: rotateY(180deg);
+      }
+
+      .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* Neon Effects */
+      .neon-text {
+        font-family: "Orbitron", monospace;
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+          0 0 40px currentColor;
+        animation: neonGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes neonGlow {
+        from {
+          text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+            0 0 40px currentColor;
+        }
+        to {
+          text-shadow: 0 0 20px currentColor, 0 0 30px currentColor,
+            0 0 60px currentColor;
+        }
+      }
+
+      /* Floating Elements */
+      .floating {
+        animation: floating 6s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Skill Orbs */
+      .skill-orb {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff006e, #8338ec);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        animation: orbit 10s linear infinite;
+      }
+
+      .skill-orb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+      }
+
+      .skill-orb::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shine 3s linear infinite;
+      }
+
+      @keyframes orbit {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Particle System */
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #fff;
+        border-radius: 50%;
+        animation: particle-float 15s linear infinite;
+      }
+
+      @keyframes particle-float {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      /* Holographic Effect */
+      .holographic {
+        background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+        background-size: 400% 400%;
+        animation: hologram 3s ease infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @keyframes hologram {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Morphing Shapes */
+      .morph-shape {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(45deg, #ff006e, #8338ec);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        animation: morph 8s ease-in-out infinite;
+      }
+
+      @keyframes morph {
+        0%,
+        100% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        25% {
+          border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        }
+        50% {
+          border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        }
+        75% {
+          border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        }
+      }
+
+      /* Cyberpunk Grid */
+      .cyber-grid {
+        background-image: linear-gradient(
+            rgba(0, 255, 255, 0.1) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: grid-move 20s linear infinite;
+      }
+
+      @keyframes grid-move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50px 50px;
+        }
+      }
+
+      /* Glitch Effect */
+      .glitch {
+        position: relative;
+        animation: glitch-skew 1s infinite linear alternate-reverse;
+      }
+
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .glitch::before {
+        animation: glitch-anim 2s infinite linear alternate-reverse;
+        color: #ff006e;
+        z-index: -1;
+      }
+
+      .glitch::after {
+        animation: glitch-anim2 1s infinite linear alternate-reverse;
+        color: #00ffff;
+        z-index: -2;
+      }
+
+      @keyframes glitch-anim {
+        0% {
+          clip: rect(42px, 9999px, 44px, 0);
+        }
+        5% {
+          clip: rect(12px, 9999px, 59px, 0);
+        }
+        10% {
+          clip: rect(48px, 9999px, 29px, 0);
+        }
+        15% {
+          clip: rect(42px, 9999px, 73px, 0);
+        }
+        20% {
+          clip: rect(63px, 9999px, 27px, 0);
+        }
+        25% {
+          clip: rect(34px, 9999px, 55px, 0);
+        }
+        30% {
+          clip: rect(86px, 9999px, 73px, 0);
+        }
+        35% {
+          clip: rect(20px, 9999px, 20px, 0);
+        }
+        40% {
+          clip: rect(26px, 9999px, 60px, 0);
+        }
+        45% {
+          clip: rect(25px, 9999px, 66px, 0);
+        }
+        50% {
+          clip: rect(57px, 9999px, 98px, 0);
+        }
+        55% {
+          clip: rect(5px, 9999px, 46px, 0);
+        }
+        60% {
+          clip: rect(82px, 9999px, 31px, 0);
+        }
+        65% {
+          clip: rect(54px, 9999px, 27px, 0);
+        }
+        70% {
+          clip: rect(28px, 9999px, 99px, 0);
+        }
+        75% {
+          clip: rect(45px, 9999px, 69px, 0);
+        }
+        80% {
+          clip: rect(23px, 9999px, 85px, 0);
+        }
+        85% {
+          clip: rect(54px, 9999px, 84px, 0);
+        }
+        90% {
+          clip: rect(45px, 9999px, 47px, 0);
+        }
+        95% {
+          clip: rect(37px, 9999px, 20px, 0);
+        }
+        100% {
+          clip: rect(4px, 9999px, 91px, 0);
+        }
+      }
+
+      @keyframes glitch-anim2 {
+        0% {
+          clip: rect(65px, 9999px, 100px, 0);
+        }
+        5% {
+          clip: rect(52px, 9999px, 74px, 0);
+        }
+        10% {
+          clip: rect(79px, 9999px, 85px, 0);
+        }
+        15% {
+          clip: rect(75px, 9999px, 5px, 0);
+        }
+        20% {
+          clip: rect(67px, 9999px, 61px, 0);
+        }
+        25% {
+          clip: rect(14px, 9999px, 79px, 0);
+        }
+        30% {
+          clip: rect(1px, 9999px, 66px, 0);
+        }
+        35% {
+          clip: rect(86px, 9999px, 30px, 0);
+        }
+        40% {
+          clip: rect(23px, 9999px, 98px, 0);
+        }
+        45% {
+          clip: rect(85px, 9999px, 72px, 0);
+        }
+        50% {
+          clip: rect(71px, 9999px, 75px, 0);
+        }
+        55% {
+          clip: rect(2px, 9999px, 48px, 0);
+        }
+        60% {
+          clip: rect(30px, 9999px, 16px, 0);
+        }
+        65% {
+          clip: rect(59px, 9999px, 50px, 0);
+        }
+        70% {
+          clip: rect(41px, 9999px, 62px, 0);
+        }
+        75% {
+          clip: rect(2px, 9999px, 82px, 0);
+        }
+        80% {
+          clip: rect(47px, 9999px, 73px, 0);
+        }
+        85% {
+          clip: rect(3px, 9999px, 27px, 0);
+        }
+        90% {
+          clip: rect(26px, 9999px, 55px, 0);
+        }
+        95% {
+          clip: rect(42px, 9999px, 97px, 0);
+        }
+        100% {
+          clip: rect(38px, 9999px, 49px, 0);
+        }
+      }
+
+      @keyframes glitch-skew {
+        2%,
+        64% {
+          transform: skew(0deg);
+        }
+        4%,
+        60% {
+          transform: skew(2deg);
+        }
+        62% {
+          transform: skew(0deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="text-white">
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Floating Particles -->
+    <div class="particle" style="left: 10%; animation-delay: 0s"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s"></div>
+    <div class="particle" style="left: 40%; animation-delay: 6s"></div>
+    <div class="particle" style="left: 50%; animation-delay: 8s"></div>
+    <div class="particle" style="left: 60%; animation-delay: 10s"></div>
+    <div class="particle" style="left: 70%; animation-delay: 12s"></div>
+    <div class="particle" style="left: 80%; animation-delay: 14s"></div>
+    <div class="particle" style="left: 90%; animation-delay: 16s"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-xl">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-bold holographic">Seu Nome</div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="neon-text hover:scale-110 transition-all duration-300"
+              style="color: #00ffff"
+              >Início</a
+            >
+            <a
+              href="#sobre"
+              class="neon-text hover:scale-110 transition-all duration-300"
+              style="color: #06ffa5"
+              >Sobre</a
+            >
+            <a
+              href="#projetos"
+              class="neon-text hover:scale-110 transition-all duration-300"
+              style="color: #ff006e"
+              >Projetos</a
+            >
+            <a
+              href="#contato"
+              class="neon-text hover:scale-110 transition-all duration-300"
+              style="color: #8338ec"
+              >Contato</a
+            >
+          </div>
+          <button class="md:hidden glass p-2 rounded-lg" id="mobile-menu-btn">
+            <i class="fas fa-bars text-xl neon-text" style="color: #00ffff"></i>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden mt-4 space-y-4 hidden" id="mobile-menu">
+          <a
+            href="#home"
+            class="block neon-text hover:scale-110 transition-all duration-300"
+            style="color: #00ffff"
+            >Início</a
+          >
+          <a
+            href="#sobre"
+            class="block neon-text hover:scale-110 transition-all duration-300"
+            style="color: #06ffa5"
+            >Sobre</a
+          >
+          <a
+            href="#projetos"
+            class="block neon-text hover:scale-110 transition-all duration-300"
+            style="color: #ff006e"
+            >Projetos</a
+          >
+          <a
+            href="#contato"
+            class="block neon-text hover:scale-110 transition-all duration-300"
+            style="color: #8338ec"
+            >Contato</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header/Hero Section -->
+    <header
+      id="home"
+      class="cyber-grid text-white py-32 relative overflow-hidden"
+    >
+      <div class="container mx-auto px-6 text-center relative">
+        <!-- Morphing Shapes Background -->
+        <div class="morph-shape absolute top-10 left-10 floating"></div>
+        <div
+          class="morph-shape absolute top-20 right-20 floating"
+          style="animation-delay: 2s"
+        ></div>
+
+        <div
+          class="w-40 h-40 mx-auto mb-8 rounded-full glass flex items-center justify-center floating relative overflow-hidden"
+        >
+          <i class="fas fa-code text-6xl neon-text" style="color: #00ffff"></i>
+          <div
+            class="absolute inset-0 rounded-full border-2 border-cyan-400 animate-spin"
+            style="animation-duration: 3s"
+          ></div>
+          <div
+            class="absolute inset-2 rounded-full border border-pink-400 animate-spin"
+            style="animation-duration: 2s; animation-direction: reverse"
+          ></div>
+        </div>
+        <h1
+          class="text-7xl font-bold mb-6 glitch holographic"
+          data-text="Seu Nome"
+        >
+          Seu Nome
+        </h1>
+        <p class="text-2xl mb-8 neon-text" style="color: #06ffa5">
+          Desenvolvedor Full Stack
+        </p>
+        <div class="flex justify-center space-x-8">
+          <a
+            href="#projetos"
+            class="glass px-10 py-4 rounded-full font-bold neon-text hover:scale-110 transition-all duration-300 relative overflow-hidden group"
+            style="color: #00ffff"
+          >
+            <span class="relative z-10">Ver Projetos</span>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"
+            ></div>
+          </a>
+          <a
+            href="#contato"
+            class="glass px-10 py-4 rounded-full font-bold neon-text hover:scale-110 transition-all duration-300 relative overflow-hidden group"
+            style="color: #ff006e"
+          >
+            <span class="relative z-10">Contato</span>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity"
+            ></div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 relative">
+      <div class="container mx-auto px-6">
+        <div class="glass rounded-3xl p-12 relative overflow-hidden">
+          <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+              <h2 class="text-5xl font-bold mb-8 holographic">Sobre Mim</h2>
+              <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Desenvolvedor apaixonado por criar soluções digitais inovadoras.
+                Com mais de 5 anos de experiência, especializo-me em
+                desenvolvimento web moderno usando as mais recentes tecnologias.
+              </p>
+              <p class="text-xl text-gray-200 leading-relaxed">
+                Minha missão é transformar ideias em produtos digitais que fazem
+                a diferença na vida das pessoas.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="skill-orb text-white text-center floating">
+                <div class="relative z-10">
+                  <i class="fab fa-js-square text-4xl mb-2"></i>
+                  <h3 class="font-bold text-sm">JavaScript</h3>
+                </div>
+              </div>
+              <div
+                class="skill-orb text-white text-center floating"
+                style="animation-delay: 1s"
+              >
+                <div class="relative z-10">
+                  <i class="fab fa-react text-4xl mb-2"></i>
+                  <h3 class="font-bold text-sm">React</h3>
+                </div>
+              </div>
+              <div
+                class="skill-orb text-white text-center floating"
+                style="animation-delay: 2s"
+              >
+                <div class="relative z-10">
+                  <i class="fab fa-node-js text-4xl mb-2"></i>
+                  <h3 class="font-bold text-sm">Node.js</h3>
+                </div>
+              </div>
+              <div
+                class="skill-orb text-white text-center floating"
+                style="animation-delay: 3s"
+              >
+                <div class="relative z-10">
+                  <i class="fas fa-database text-4xl mb-2"></i>
+                  <h3 class="font-bold text-sm">MongoDB</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projetos" class="py-20 relative">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-6xl font-bold text-center mb-16 holographic glitch"
+          data-text="Meus Projetos"
+        >
+          Meus Projetos
+        </h2>
+        <div class="creative-grid">
+          <!-- Project 1 -->
+          <div class="project-card-3d">
+            <div class="card-face glass">
+              <div
+                class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center relative overflow-hidden"
+              >
+                <i
+                  class="fas fa-shopping-cart text-6xl text-white neon-text floating"
+                ></i>
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"
+                ></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 holographic">
+                  E-commerce Platform
+                </h3>
+                <p class="text-gray-200 mb-4">
+                  Plataforma completa de e-commerce com painel administrativo...
+                </p>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <h3
+                class="text-2xl font-bold mb-4 neon-text"
+                style="color: #ff006e"
+              >
+                E-commerce Platform
+              </h3>
+              <p class="text-gray-200 mb-6 text-center">
+                Plataforma completa de e-commerce com painel administrativo,
+                carrinho de compras e sistema de pagamento integrado.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #00ffff"
+                  >React</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #06ffa5"
+                  >Node.js</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #8338ec"
+                  >MongoDB</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #00ffff"
+                >
+                  <i class="fab fa-github mr-2"></i>Código
+                </button>
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #ff006e"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card-3d">
+            <div class="card-face glass">
+              <div
+                class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center relative overflow-hidden"
+              >
+                <i
+                  class="fas fa-tasks text-6xl text-white neon-text floating"
+                  style="animation-delay: 1s"
+                ></i>
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"
+                  style="animation-delay: 1s"
+                ></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 holographic">
+                  Task Manager App
+                </h3>
+                <p class="text-gray-200 mb-4">
+                  Aplicativo de gerenciamento de tarefas com colaboração...
+                </p>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <h3
+                class="text-2xl font-bold mb-4 neon-text"
+                style="color: #06ffa5"
+              >
+                Task Manager App
+              </h3>
+              <p class="text-gray-200 mb-6 text-center">
+                Aplicativo de gerenciamento de tarefas com funcionalidades de
+                colaboração em tempo real e sincronização automática.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #00ffff"
+                  >Vue.js</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #ff006e"
+                  >Firebase</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #8338ec"
+                  >Socket.io</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #00ffff"
+                >
+                  <i class="fab fa-github mr-2"></i>Código
+                </button>
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #06ffa5"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card-3d">
+            <div class="card-face glass">
+              <div
+                class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center relative overflow-hidden"
+              >
+                <i
+                  class="fas fa-chart-line text-6xl text-white neon-text floating"
+                  style="animation-delay: 2s"
+                ></i>
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"
+                  style="animation-delay: 2s"
+                ></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 holographic">
+                  Analytics Dashboard
+                </h3>
+                <p class="text-gray-200 mb-4">
+                  Dashboard interativo para visualização de dados...
+                </p>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <h3
+                class="text-2xl font-bold mb-4 neon-text"
+                style="color: #ff9500"
+              >
+                Analytics Dashboard
+              </h3>
+              <p class="text-gray-200 mb-6 text-center">
+                Dashboard interativo para visualização de dados com gráficos
+                dinâmicos e relatórios personalizados em tempo real.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #00ffff"
+                  >React</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #8338ec"
+                  >D3.js</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #06ffa5"
+                  >Express</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #00ffff"
+                >
+                  <i class="fab fa-github mr-2"></i>Código
+                </button>
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #ff9500"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card-3d">
+            <div class="card-face glass">
+              <div
+                class="h-48 bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center relative overflow-hidden"
+              >
+                <i
+                  class="fas fa-mobile-alt text-6xl text-white neon-text floating"
+                  style="animation-delay: 3s"
+                ></i>
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"
+                  style="animation-delay: 3s"
+                ></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-3 holographic">
+                  Mobile Banking App
+                </h3>
+                <p class="text-gray-200 mb-4">
+                  Aplicativo mobile para serviços bancários...
+                </p>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <h3
+                class="text-2xl font-bold mb-4 neon-text"
+                style="color: #8338ec"
+              >
+                Mobile Banking App
+              </h3>
+              <p class="text-gray-200 mb-6 text-center">
+                Aplicativo mobile para serviços bancários com autenticação
+                biométrica e transferências instantâneas seguras.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #00ffff"
+                  >React Native</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #06ffa5"
+                  >Node.js</span
+                >
+                <span
+                  class="glass px-3 py-1 rounded-full text-sm neon-text"
+                  style="color: #ff006e"
+                  >PostgreSQL</span
+                >
+              </div>
+              <div class="flex space-x-4">
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #00ffff"
+                >
+                  <i class="fab fa-github mr-2"></i>Código
+                </button>
+                <button
+                  class="glass px-6 py-2 rounded-lg neon-text hover:scale-105 transition-transform"
+                  style="color: #8338ec"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 relative">
+      <div class="container mx-auto px-6 text-center">
+        <h2
+          class="text-6xl font-bold mb-12 holographic glitch"
+          data-text="Vamos Trabalhar Juntos?"
+        >
+          Vamos Trabalhar Juntos?
+        </h2>
+        <p class="text-2xl text-gray-200 mb-16 max-w-3xl mx-auto">
+          Estou sempre aberto a novos desafios e oportunidades. Entre em contato
+          para discutirmos seu próximo projeto!
+        </p>
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div
+            class="glass p-8 rounded-2xl hover:scale-105 transition-all duration-300 floating"
+          >
+            <i
+              class="fas fa-envelope text-5xl neon-text mb-6"
+              style="color: #ff006e"
+            ></i>
+            <h3 class="font-bold mb-4 text-2xl holographic">Email</h3>
+            <p class="text-gray-200 text-lg">joao@exemplo.com</p>
+          </div>
+          <div
+            class="glass p-8 rounded-2xl hover:scale-105 transition-all duration-300 floating"
+            style="animation-delay: 1s"
+          >
+            <i
+              class="fab fa-linkedin text-5xl neon-text mb-6"
+              style="color: #00ffff"
+            ></i>
+            <h3 class="font-bold mb-4 text-2xl holographic">LinkedIn</h3>
+            <p class="text-gray-200 text-lg">linkedin.com/in/joaosilva</p>
+          </div>
+          <div
+            class="glass p-8 rounded-2xl hover:scale-105 transition-all duration-300 floating"
+            style="animation-delay: 2s"
+          >
+            <i
+              class="fab fa-github text-5xl neon-text mb-6"
+              style="color: #06ffa5"
+            ></i>
+            <h3 class="font-bold mb-4 text-2xl holographic">GitHub</h3>
+            <p class="text-gray-200 text-lg">github.com/joaosilva</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass py-12 relative">
+      <div class="container mx-auto px-6 text-center">
+        <p class="text-xl holographic">
+          &copy; 2024 Seu Nome. Todos os direitos reservados.
+        </p>
+        <div class="mt-6 flex justify-center space-x-6">
+          <div class="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+          <div
+            class="w-3 h-3 bg-pink-400 rounded-full animate-pulse"
+            style="animation-delay: 0.5s"
+          ></div>
+          <div
+            class="w-3 h-3 bg-green-400 rounded-full animate-pulse"
+            style="animation-delay: 1s"
+          ></div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const icon = mobileMenuBtn.querySelector("i");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-times");
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Close mobile menu after clicking
+            mobileMenu.classList.add("hidden");
+            const icon = mobileMenuBtn.querySelector("i");
+            icon.classList.add("fa-bars");
+            icon.classList.remove("fa-times");
+          }
+        });
+      });
+
+      // Enhanced 3D card interactions
+      document.querySelectorAll(".project-card-3d").forEach((card) => {
+        let isFlipped = false;
+
+        card.addEventListener("click", function () {
+          isFlipped = !isFlipped;
+          this.style.transform = isFlipped
+            ? "rotateY(180deg)"
+            : "rotateY(0deg)";
+        });
+
+        // Auto-flip back after 5 seconds
+        card.addEventListener("mouseenter", function () {
+          setTimeout(() => {
+            if (isFlipped) {
+              isFlipped = false;
+              this.style.transform = "rotateY(0deg)";
+            }
+          }, 5000);
+        });
+      });
+
+      // Simulate button clicks with enhanced effects
+      document.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.stopPropagation();
+
+          // Create ripple effect
+          const ripple = document.createElement("div");
+          ripple.style.position = "absolute";
+          ripple.style.borderRadius = "50%";
+          ripple.style.background = "rgba(255, 255, 255, 0.6)";
+          ripple.style.transform = "scale(0)";
+          ripple.style.animation = "ripple 0.6s linear";
+          ripple.style.left = "50%";
+          ripple.style.top = "50%";
+          ripple.style.width = "20px";
+          ripple.style.height = "20px";
+          ripple.style.marginLeft = "-10px";
+          ripple.style.marginTop = "-10px";
+
+          this.style.position = "relative";
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+
+          const buttonText = this.textContent.trim();
+          if (buttonText.includes("Código")) {
+            alert("🚀 Redirecionando para o repositório no GitHub...");
+          } else if (buttonText.includes("Demo")) {
+            alert("✨ Abrindo demonstração do projeto...");
+          }
+        });
+      });
+
+      // Add ripple animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Parallax effect for morphing shapes
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const shapes = document.querySelectorAll(".morph-shape");
+        shapes.forEach((shape, index) => {
+          const speed = 0.5 + index * 0.1;
+          shape.style.transform = `translateY(${scrolled * speed}px) rotate(${
+            scrolled * 0.1
+          }deg)`;
+        });
+      });
+
+      // Dynamic particle generation
+      function createParticle() {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDelay = Math.random() * 15 + "s";
+        particle.style.animationDuration = 15 + Math.random() * 10 + "s";
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 25000);
+      }
+
+      // Generate particles periodically
+      setInterval(createParticle, 3000);
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+          }
+        });
+      });
+
+      document
+        .querySelectorAll(".floating, .skill-orb, .project-card-3d")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'97f8056f83b7f1c9',t:'MTc1NzkzODIyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
