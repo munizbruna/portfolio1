@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Nome - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Terminal Background */
+        .terminal-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #333;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 12px 16px;
+            border-bottom: 1px solid #333;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+        
+        /* Typing Animation */
+        .typing-text {
+            border-right: 2px solid #00ff88;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: #00ff88; }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        
+        .code-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .line-number {
+            color: #666;
+            margin-right: 16px;
+            min-width: 20px;
+            text-align: right;
+            user-select: none;
+        }
+        
+        /* Syntax Highlighting */
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .variable { color: #9cdcfe; }
+        .operator { color: #d4d4d4; }
+        
+        /* Interactive Elements */
+        .interactive-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .interactive-card:hover::before {
+            left: 100%;
+        }
+        
+        .interactive-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
+        }
+        
+        /* Skill Progress Bars */
+        .skill-bar {
+            background: #333;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 4px;
+            transition: width 2s ease;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Project Cards */
+        .project-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.02);
+            border-color: #00ff88;
+            box-shadow: 0 12px 48px rgba(0, 255, 136, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+        
+        /* Floating Elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: #00ff88;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        /* Console Output */
+        .console-output {
+            background: #000;
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            border: 1px solid #333;
+        }
+        
+        .console-line {
+            margin-bottom: 8px;
+        }
+        
+        .console-prompt {
+            color: #00d4ff;
+        }
+        
+        .console-success {
+            color: #00ff88;
+        }
+        
+        .console-error {
+            color: #ff6b6b;
+        }
+        
+        /* Loading Animation */
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .code-block {
+                font-size: 12px;
+                padding: 16px;
+            }
+            
+            .interactive-card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-rain" id="matrix"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="code-font text-xl font-bold text-green-400">
+                    <span class="text-blue-400">&lt;</span>JoãoSilva<span class="text-blue-400">/&gt;</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <button class="md:hidden text-green-400" id="mobile-menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                   
+                    
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        Olá, eu sou <span class="text-green-400">João</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras. 
+                        Especializado em JavaScript, React e tecnologias modernas.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <button class="btn-primary" onclick="scrollToSection('projects')">
+                            Ver Projetos
+                        </button>
+                        <button class="btn-secondary" onclick="scrollToSection('contact')">
+                            Entre em Contato
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="floating">
+                    <div class="code-block">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="keyword">const</span> <span class="variable">developer</span> <span class="operator">=</span> <span class="operator">{</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span style="margin-left: 20px;"><span class="variable">name</span><span class="operator">:</span> <span class="string">'Seu Nome'</span><span class="operator">,</span></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span style="margin-left: 20px;"><span class="variable">role</span><span class="operator">:</span> <span class="string">'Full Stack Developer'</span><span class="operator">,</span></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span style="margin-left: 20px;"><span class="variable">skills</span><span class="operator">:</span> <span class="operator">[</span><span class="string">'React'</span><span class="operator">,</span> <span class="string">'Node.js'</span><span class="operator">,</span> <span class="string">'Python'</span><span class="operator">],</span></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span style="margin-left: 20px;"><span class="function">code</span><span class="operator">:</span> <span class="operator">()</span> <span class="operator">=></span> <span class="string">'Clean & Efficient'</span><span class="operator">,</span></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">6</span>
+                            <span style="margin-left: 20px;"><span class="variable">passion</span><span class="operator">:</span> <span class="string">'Building amazing things'</span></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">7</span>
+                            <span class="operator">};</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">8</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">9</span>
+                            <span class="comment">// Sempre pronto para novos desafios!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="text-blue-400">&lt;</span>Sobre Mim<span class="text-blue-400">/&gt;</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="interactive-card">
+                    <h3 class="text-2xl font-bold mb-6 text-green-400">Minha Jornada</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Com mais de 5 anos de experiência em desenvolvimento, comecei minha jornada criando 
+                        pequenos scripts e hoje desenvolvo aplicações completas que impactam milhares de usuários.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Sou apaixonado por tecnologia e sempre busco aprender novas ferramentas e metodologias 
+                        para criar soluções mais eficientes e elegantes.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-green-400 mb-2" id="projects-count">0</div>
+                            <div class="text-gray-400">Projetos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-400 mb-2" id="experience-years">0</div>
+                            <div class="text-gray-400">Anos de Experiência</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal-bg">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                        <span class="code-font text-sm text-gray-400 ml-4">git-log.sh</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="console-output">
+                            <div class="console-line">
+                                <span class="console-prompt">$</span> git log --oneline --graph
+                            </div>
+                            <div class="console-line console-success">
+                                * a1b2c3d feat: Implementação de microserviços
+                            </div>
+                            <div class="console-line console-success">
+                                * d4e5f6g refactor: Otimização de performance
+                            </div>
+                            <div class="console-line console-success">
+                                * g7h8i9j feat: Sistema de autenticação JWT
+                            </div>
+                            <div class="console-line console-success">
+                                * j1k2l3m docs: Documentação da API
+                            </div>
+                            <div class="console-line console-success">
+                                * m4n5o6p feat: Dashboard analytics
+                            </div>
+                            <div class="console-line">
+                                <span class="console-prompt">$</span> git status
+                            </div>
+                            <div class="console-line console-success">
+                                On branch main - Always learning<span class="loading-dots"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="text-blue-400">&lt;</span>Habilidades<span class="text-blue-400">/&gt;</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="interactive-card">
+                    <h3 class="text-2xl font-bold mb-8 text-green-400">Tecnologias</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">JavaScript / TypeScript</span>
+                                <span class="text-green-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">React / Next.js</span>
+                                <span class="text-green-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Node.js / Express</span>
+                                <span class="text-green-400">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Python / Django</span>
+                                <span class="text-green-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="code-font">Docker / AWS</span>
+                                <span class="text-green-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-card">
+                    <h3 class="text-2xl font-bold mb-8 text-blue-400">Ferramentas & Metodologias</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-git-alt text-3xl text-orange-400 mb-2"></i>
+                            <div class="code-font text-sm">Git / GitHub</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-docker text-3xl text-blue-400 mb-2"></i>
+                            <div class="code-font text-sm">Docker</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-database text-3xl text-green-400 mb-2"></i>
+                            <div class="code-font text-sm">MongoDB</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fab fa-aws text-3xl text-yellow-400 mb-2"></i>
+                            <div class="code-font text-sm">AWS</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-code-branch text-3xl text-purple-400 mb-2"></i>
+                            <div class="code-font text-sm">CI/CD</div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg text-center hover:bg-gray-700 transition-colors">
+                            <i class="fas fa-users text-3xl text-pink-400 mb-2"></i>
+                            <div class="code-font text-sm">Agile</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="text-blue-400">&lt;</span>Projetos<span class="text-blue-400">/&gt;</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-shopping-cart text-6xl text-white"></i>
+                        <div class="project-overlay">
+                            <div class="flex space-x-4">
+                                <button class="btn-primary" onclick="showProjectDetails('ecommerce')">
+                                    <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github mr-2"></i>Código
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-green-400">E-commerce Platform</h3>
+                        <p class="text-gray-300 mb-4">
+                            Plataforma completa de e-commerce com painel administrativo, 
+                            carrinho de compras e sistema de pagamento.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-xs px-2 py-1 rounded code-font">React</span>
+                            <span class="bg-green-600 text-xs px-2 py-1 rounded code-font">Node.js</span>
+                            <span class="bg-purple-600 text-xs px-2 py-1 rounded code-font">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-tasks text-6xl text-white"></i>
+                        <div class="project-overlay">
+                            <div class="flex space-x-4">
+                                <button class="btn-primary" onclick="showProjectDetails('taskmanager')">
+                                    <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github mr-2"></i>Código
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-green-400">Task Manager</h3>
+                        <p class="text-gray-300 mb-4">
+                            Aplicativo de gerenciamento de tarefas com colaboração 
+                            em tempo real e sincronização automática.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-xs px-2 py-1 rounded code-font">Vue.js</span>
+                            <span class="bg-yellow-600 text-xs px-2 py-1 rounded code-font">Firebase</span>
+                            <span class="bg-red-600 text-xs px-2 py-1 rounded code-font">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-chart-line text-6xl text-white"></i>
+                        <div class="project-overlay">
+                            <div class="flex space-x-4">
+                                <button class="btn-primary" onclick="showProjectDetails('dashboard')">
+                                    <i class="fas fa-eye mr-2"></i>Ver Detalhes
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fab fa-github mr-2"></i>Código
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-green-400">Analytics Dashboard</h3>
+                        <p class="text-gray-300 mb-4">
+                            Dashboard interativo para visualização de dados com 
+                            gráficos dinâmicos e relatórios personalizados.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-600 text-xs px-2 py-1 rounded code-font">React</span>
+                            <span class="bg-orange-600 text-xs px-2 py-1 rounded code-font">D3.js</span>
+                            <span class="bg-green-600 text-xs px-2 py-1 rounded code-font">Express</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="text-blue-400">&lt;</span>Contato<span class="text-blue-400">/&gt;</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="interactive-card">
+                    <h3 class="text-2xl font-bold mb-8 text-green-400">Vamos Conversar!</h3>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        Estou sempre aberto a novos desafios e oportunidades. 
+                        Entre em contato para discutirmos seu próximo projeto!
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-400/20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Email</div>
+                                <div class="text-gray-400 code-font">Nome@exemplo.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-400/20 rounded-lg flex items-center justify-center">
+                                <i class="fab fa-linkedin text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">LinkedIn</div>
+                                <div class="text-gray-400 code-font">linkedin.com/in/SeuNome</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-purple-400/20 rounded-lg flex items-center justify-center">
+                                <i class="fab fa-github text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">GitHub</div>
+                                <div class="text-gray-400 code-font">github.com/Nomesilva</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal-bg">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                        <span class="code-font text-sm text-gray-400 ml-4">contact-form.js</span>
+                    </div>
+                    <div class="p-6">
+                        <form class="space-y-4" onsubmit="handleFormSubmit(event)">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 code-font">Nome</label>
+                                <input type="text" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:border-green-400 focus:outline-none transition-colors" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 code-font">Email</label>
+                                <input type="email" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:border-green-400 focus:outline-none transition-colors" placeholder="seu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 code-font">Mensagem</label>
+                                <textarea rows="4" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 focus:border-green-400 focus:outline-none transition-colors resize-none" placeholder="Sua mensagem..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <div class="code-font text-gray-400 mb-4">
+                <span class="text-blue-400">&lt;</span>
+                Desenvolvido com 
+                <span class="text-red-400">❤️</span> 
+                por Seu Nome
+                <span class="text-blue-400">/&gt;</span>
+            </div>
+            <div class="text-gray-500 text-sm">
+                © 2024 Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-6">
+        <div class="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="terminal-header">
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
+                <span class="code-font text-sm text-gray-400 ml-4" id="modal-title">project-details.md</span>
+                <button class="ml-auto text-gray-400 hover:text-white" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-8" id="modal-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff88';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        // Typing Animation
+        const typingElement = document.getElementById('typing');
+        const commands = [
+            'npm start',
+            'git commit -m "feat: new feature"',
+            'docker build -t app .',
+            'python manage.py runserver',
+            'yarn build'
+        ];
+        let commandIndex = 0;
+        let charIndex = 0;
+
+        function typeCommand() {
+            if (charIndex < commands[commandIndex].length) {
+                typingElement.textContent += commands[commandIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeCommand, 100);
+            } else {
+                setTimeout(() => {
+                    typingElement.textContent = '';
+                    charIndex = 0;
+                    commandIndex = (commandIndex + 1) % commands.length;
+                    setTimeout(typeCommand, 500);
+                }, 2000);
+            }
+        }
+
+        typeCommand();
+
+        // Counter Animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'projects-count') {
+                        animateCounter(entry.target, 50);
+                    } else if (entry.target.id === 'experience-years') {
+                        animateCounter(entry.target, 5);
+                    }
+                    
+                    // Animate skill bars
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = width + '%';
+                        }, 500);
+                    });
+                }
+            });
+        });
+
+        // Observe elements
+        document.querySelectorAll('#projects-count, #experience-years, .interactive-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Update active nav link
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 100 && rect.bottom >= 100) {
+                    current = section;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Project Modal
+        function showProjectDetails(projectId) {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            
+            const projectData = {
+                ecommerce: {
+                    title: 'E-commerce Platform',
+                    description: 'Uma plataforma completa de e-commerce desenvolvida com React e Node.js',
+                    features: [
+                        'Sistema de autenticação JWT',
+                        'Carrinho de compras persistente',
+                        'Painel administrativo completo',
+                        'Integração com gateway de pagamento',
+                        'Sistema de avaliações e comentários'
+                    ],
+                    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'JWT']
+                },
+                taskmanager: {
+                    title: 'Task Manager',
+                    description: 'Aplicativo de gerenciamento de tarefas com colaboração em tempo real',
+                    features: [
+                        'Colaboração em tempo real',
+                        'Notificações push',
+                        'Drag and drop interface',
+                        'Relatórios de produtividade',
+                        'Integração com calendário'
+                    ],
+                    tech: ['Vue.js', 'Firebase', 'Socket.io', 'PWA']
+                },
+                dashboard: {
+                    title: 'Analytics Dashboard',
+                    description: 'Dashboard interativo para visualização de dados e métricas',
+                    features: [
+                        'Gráficos interativos',
+                        'Filtros avançados',
+                        'Exportação de relatórios',
+                        'Alertas personalizados',
+                        'API REST completa'
+                    ],
+                    tech: ['React', 'D3.js', 'Express', 'PostgreSQL']
+                }
+            };
+            
+            const project = projectData[projectId];
+            
+            content.innerHTML = `
+                <h2 class="text-3xl font-bold mb-6 text-green-400">${project.title}</h2>
+                <p class="text-gray-300 mb-8 text-lg leading-relaxed">${project.description}</p>
+                
+                <h3 class="text-xl font-bold mb-4 text-blue-400">Principais Funcionalidades</h3>
+                <ul class="list-disc list-inside text-gray-300 mb-8 space-y-2">
+                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+                
+                <h3 class="text-xl font-bold mb-4 text-blue-400">Tecnologias Utilizadas</h3>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    ${project.tech.map(tech => `<span class="bg-gray-700 px-3 py-1 rounded-lg code-font text-sm">${tech}</span>`).join('')}
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button class="btn-primary">
+                        <i class="fas fa-external-link-alt mr-2"></i>Ver Demo
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fab fa-github mr-2"></i>Ver Código
+                    </button>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Simulate form submission
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Enviado!';
+                button.classList.remove('btn-primary');
+                button.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.classList.add('btn-primary');
+                    button.classList.remove('bg-green-600');
+                    event.target.reset();
+                }, 2000);
+            }, 2000);
+        }
+
+        // Mobile menu
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            // Mobile menu functionality would go here
+            alert('Menu mobile - funcionalidade seria implementada aqui!');
+        });
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f8cc1ea07c1595',t:'MTc1Nzk0NjM2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
